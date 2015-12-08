@@ -1,0 +1,24 @@
+{
+  "name": "ngninja",
+  "description": "Test Project for nodeJS, Bower, NPM and Gulp",
+  "main": "appModule.js",
+  "authors": [
+    "Muhammad Hassan"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "angular": "angularjs#v1.3.8",
+    "angular-resource": "v1.3.8",
+    "angular-ui-bootstrap": "v0.12.1",
+    "angular-ui-router": "v0.2.13",
+    "lodash": "v3.10.1",
+    "oclazyload": "v1.0.6"
+  },
+  "version": "2.0.0",
+  "devDependencies": {
+    "jasmine-core": "jasmine#~2.3.4"
+  }
+}
