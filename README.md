@@ -53,7 +53,7 @@ gulp.task('TaskName', [dependencyItem], function () {
 		.pipe(gulp.dest('./destinationPath'));
 });
 
-***1. gulp.task(taskName [, arary of dependencies], function)***
+-- 1. gulp.task(taskName [, arary of dependencies], function)
 
 **Logical Module Division**
 
