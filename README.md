@@ -46,12 +46,12 @@ Since Gulp is stream based, so in pipeline architecture, diagram would be as fol
 - gulp.dest == write the files
 - gulp.watch == watch the files when making code changes
 
-gulp.task('TaskName', [dependencyItem], function () {
-	return gulp
-		.src('./sourcePath')
-		.pipe(operation)
-		.pipe(gulp.dest('./destinationPath'));
-});
+	gulp.task('TaskName', [dependencyItem], function () {
+		return gulp
+			.src('./sourcePath')
+			.pipe(operation)
+			.pipe(gulp.dest('./destinationPath'));
+	});
 
 -- 1. gulp.task(taskName [, arary of dependencies], function)
 
