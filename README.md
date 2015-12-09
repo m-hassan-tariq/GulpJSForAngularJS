@@ -82,12 +82,12 @@ Since Gulp is stream based, so in pipeline architecture, diagram would be as fol
 
 	- Used to monitor files when altering code during development
 
-		gulp.watch(file path [, options], [task name])
+			gulp.watch(file path [, options], [task name])
 	
 	- Execute single or multiple tasks for the files matched with the file path
 	- Optionally specify options to apply to set of files
 	
-		gulp.watch(file path [, options], CallbackFunction)
+			gulp.watch(file path [, options], CallbackFunction)
 	
 	- Execute call back function for the files matched with the file path
 	- Optionally specify options to apply to set of files
