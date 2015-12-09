@@ -23,11 +23,26 @@ Gulp is more codish as compare to grunt which is more into configuration, so Gul
 
 ![2](https://cloud.githubusercontent.com/assets/10474169/11699406/d05a0174-9e89-11e5-8748-75b5ad4bae43.png)
 
-**Workflow using Gulp.js**
+**Gulp Workflow**
 
-![1](https://cloud.githubusercontent.com/assets/10474169/11671501/78512d06-9dce-11e5-85be-c8d904f90f21.png)
+- Fetch files to be modify
+- Modify the files
+- Create new files
 
-**Module Directory Structure**
+![3](https://cloud.githubusercontent.com/assets/10474169/11700170/ea842c06-9e8d-11e5-93c3-c02add86dff4.png)
+
+Since Gulp is stream based, so in pipeline architecture, diagram would be as follows
+
+![4](https://cloud.githubusercontent.com/assets/10474169/11700250/57430c2c-9e8e-11e5-82cc-a6ff65e6b75f.png)
+
+![5](https://cloud.githubusercontent.com/assets/10474169/11700307/b65be634-9e8e-11e5-970d-f3f304641a14.png)
+
+**Gulp API**
+
+- gulp.task == Define a task
+- gulp.src == read files
+- gulp.dest == write the files
+- gulp.watch == watch the files when making code changes
 
 ![2](https://cloud.githubusercontent.com/assets/10474169/11671502/785263e2-9dce-11e5-84cb-ca920a56cf53.png)
 
