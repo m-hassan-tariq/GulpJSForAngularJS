@@ -58,9 +58,39 @@ Since Gulp is stream based, so in pipeline architecture, diagram would be as fol
 		gulp.task(taskName [, arary of dependencies], function)
 	
 	- Register a task
-	- dependecies are optional
-	- dependecies are executed in parallel not in sequential order
-	- actual task is executed soon after completion of depencies
+	- Dependecies are optional
+	- Dependecies are executed in parallel not in sequential order
+	- Actual task is executed soon after completion of depencies
+
+2. gulp.src
+
+		gulp.src(file path [, options])
+	
+	- Fetch set of files to be modified
+	- Wildcard operators may be used to emit/add files
+	- Optionally specify options to apply to set of files (e.g. how much of path to be retained)
+
+1. gulp.dest
+
+		gulp.dest(output folder path [, options])
+	
+	- Modified files are written to destination output folder
+	- Write piped files to new file or same file
+	- Optionally specify options to apply to set of output files or folder
+	
+1. gulp.watch
+
+	- Used to monitor files when altering code during development
+
+		gulp.watch(file path [, options], [task name])
+	
+	- Execute single or multiple tasks for the files matched with the file path
+	- Optionally specify options to apply to set of files
+	
+		gulp.watch(file path [, options], CallbackFunction)
+	
+	- Execute call back function for the files matched with the file path
+	- Optionally specify options to apply to set of files
 
 **Logical Module Division**
 
