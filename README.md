@@ -46,8 +46,6 @@ Since Gulp is stream based, so in pipeline architecture, diagram would be as fol
 - gulp.dest == write the files
 - gulp.watch == watch the files when making code changes
 
-
-
 		gulp.task('TaskName', [dependencyItem], function () {
 			return gulp
 				.src('./sourcePath')
@@ -57,7 +55,12 @@ Since Gulp is stream based, so in pipeline architecture, diagram would be as fol
 
 1. gulp.task
 
-	gulp.task(taskName [, arary of dependencies], function)
+		gulp.task(taskName [, arary of dependencies], function)
+	
+	- Register a task
+	- dependecies are optional
+	- dependecies are executed in parallel not in sequential order
+	- actual task is executed soon after completion of depencies
 
 **Logical Module Division**
 
