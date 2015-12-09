@@ -62,7 +62,7 @@ Since Gulp is stream based, so in pipeline architecture, diagram would be as fol
 	- Dependecies are executed in parallel not in sequential order
 	- Actual task is executed soon after completion of depencies
 
-**2. gulp.src**
+2. **gulp.src**
 
 		gulp.src(file path [, options])
 	
@@ -70,7 +70,7 @@ Since Gulp is stream based, so in pipeline architecture, diagram would be as fol
 	- Wildcard operators may be used to emit/add files
 	- Optionally specify options to apply to set of files (e.g. how much of path to be retained)
 
-**3. gulp.dest**
+3. **gulp.dest**
 
 		gulp.dest(output folder path [, options])
 	
@@ -78,7 +78,7 @@ Since Gulp is stream based, so in pipeline architecture, diagram would be as fol
 	- Write piped files to new file or same file
 	- Optionally specify options to apply to set of output files or folder
 	
-**4. gulp.watch**
+4. **gulp.watch**
 
 	- Used to monitor files when altering code during development
 
