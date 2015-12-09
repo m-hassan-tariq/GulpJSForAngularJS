@@ -53,7 +53,7 @@ Since Gulp is stream based, so in pipeline architecture, diagram would be as fol
 				.pipe(gulp.dest('./destinationPath'));
 		});
 
-**1. gulp.task**
+1. **gulp.task**
 
 		gulp.task(taskName [, arary of dependencies], function)
 	
