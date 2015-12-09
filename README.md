@@ -3,7 +3,7 @@ Using Gulp.JS to specify units of work in angularJS
 
 # Content is still under progress
 
-**Core Feature of Gulp**
+###Core Feature of Gulp###
 - Minification
 - Concatenation
 - Vendor prefixes
@@ -19,13 +19,13 @@ It streamline your SDLC cycle more efficiently using flow of continuous integrat
 
 ![1](https://cloud.githubusercontent.com/assets/10474169/11699271/387c7ba2-9e89-11e5-8feb-1134d25725af.png)
 
-**Difference between Grunt and Gulp**
+###Difference between Grunt and Gulp###
 
 Gulp is more codish as compare to grunt which is more into configuration, so Gulp is more readable, easier to debug. Its stream based so used node more readily. 
 
 ![2](https://cloud.githubusercontent.com/assets/10474169/11699406/d05a0174-9e89-11e5-8748-75b5ad4bae43.png)
 
-**Gulp Workflow**
+###Gulp Workflow###
 
 - Fetch files to be modify
 - Modify the files
@@ -39,7 +39,7 @@ Since Gulp is stream based, so in pipeline architecture, diagram would be as fol
 
 ![5](https://cloud.githubusercontent.com/assets/10474169/11700307/b65be634-9e8e-11e5-970d-f3f304641a14.png)
 
-**Gulp API**
+###Gulp API###
 
 - gulp.task == Define a task
 - gulp.src == read files
@@ -53,7 +53,7 @@ Since Gulp is stream based, so in pipeline architecture, diagram would be as fol
 				.pipe(gulp.dest('./destinationPath'));
 		});
 
-1. gulp.task
+**1. gulp.task**
 
 		gulp.task(taskName [, arary of dependencies], function)
 	
