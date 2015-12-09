@@ -80,7 +80,7 @@ Since Gulp is stream based, so in pipeline architecture, diagram would be as fol
 	
 4. **gulp.watch**
 
-	- Used to monitor files when altering code during development
+	Used to monitor files when altering code during development
 
 			gulp.watch(file path [, options], [task name])
 	
