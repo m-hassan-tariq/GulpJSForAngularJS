@@ -324,7 +324,7 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	Command:
 			gulp default
 
-- Use **gulp-plumber** to prevent pipe breaking caused by errors from gulp plugins
+- Use **gulp-plumber** to prevent pipe breaking caused by errors from gulp plugins, It handle error gracefully instead of .on('error', errorfunction)
 
 		npm install gulp-plumber
 
@@ -378,7 +378,7 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 			gulp jscode
 
 
-1. **less and sass compilation**
+2. **less and sass compilation**
 
 	- Use gulpjs task in order to compile sass and less before browsing 
 	- Task will take care of variables, operators, functions, mixins etc in your less file
@@ -405,6 +405,78 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	
 			gulp css
 
+3. **Add Javascript and CSS dynamically in main file**
+
+	- Use *wiredep* to inject bower js and css dependencies into index.html
+	- Use *gulp-inject* to inject custom js and css dependencies into index.html
+	
+	Install:
+	
+			npm install --save-dev wiredep gulp-inject
+
+	Syntax in HTML File for **wiredep**:
+	
+			<!-- bower:css -->
+			
+			<!-- endbower -->
+			
+			<!-- bower:js -->
+			
+			<!-- endbower -->
+	
+	Code:
+	
+			var gulp = require('gulp');
+			var $ = require('gulp-load-plugins')({ lazy: true });
+				
+			var options = {
+				bowerJson: require('./bower.json'),
+				directory: './bower_components/',
+				ignorePath:  '../..'
+			}
+				
+			gulp.task('injectJS', function () {
+				var wiredep = require('wiredep').stream;
+				
+				return gulp
+					.src('./src/index.html')
+					.pipe(wiredep(options))
+					.pipe($.inject(gulp.src('modules/home/**/*.js')))
+					.pipe(gulp.dest('./build/'));
+			});
+
+	Execute:
+	
+			gulp injectJS
+
+	Syntax in HTML File for **gulp-inject**:
+	
+			<!-- inject:css -->
+			
+			<!-- endinject -->
+			
+			<!-- inject:js -->
+			
+			<!-- endinject -->	
+	Code:
+	
+			var gulp = require('gulp');
+			var $ = require('gulp-load-plugins')({ lazy: true });
+				
+			gulp.task('injectCSS', function () {
+				
+				return gulp
+					.src('./src/index.html')
+					.pipe($.inject(gulp.src('content/**/*.css')))
+					.pipe(gulp.dest('./build/content/'));
+			});
+
+	Execute:
+	
+			gulp injectCSS
+
+	
+	
 
 
 Images created by john papa
