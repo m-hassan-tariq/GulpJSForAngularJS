@@ -203,49 +203,49 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 
 		$ npm install --save-dev gulp-load-plugins
 
-Code Before: 
-		
-		var gulp = require('gulp');
-		var jshint = require('gulp-jshint');
-		
-		gulp.task('jshint', function () {
-	  		return gulp
-			.src('./file.js')
-			.pipe(jshint())
-			.pipe(jshint.reporter('YOUR_REPORTER_HERE'));
-		});
-
-Code Before: 
-		
-		var gulp = require('gulp');
-		var $ = require('gulp-load-plugins')({ lazy: true });
-		
-		gulp.task('jshint', function () {
-		    return gulp
-			.src('./file.js')
-			.pipe($.jshint())
-    			.pipe($.jshint.reporter('YOUR_REPORTER_HERE'));
-		});
+	Code Before: 
+			
+			var gulp = require('gulp');
+			var jshint = require('gulp-jshint');
+			
+			gulp.task('jshint', function () {
+		  		return gulp
+				.src('./file.js')
+				.pipe(jshint())
+				.pipe(jshint.reporter('YOUR_REPORTER_HERE'));
+			});
+	
+	Code Before: 
+			
+			var gulp = require('gulp');
+			var $ = require('gulp-load-plugins')({ lazy: true });
+			
+			gulp.task('jshint', function () {
+			    return gulp
+				.src('./file.js')
+				.pipe($.jshint())
+	    			.pipe($.jshint.reporter('YOUR_REPORTER_HERE'));
+			});
 
 - Use **yargs** for picking up argument from CLI. Using this plugin you may get node.js command line arguments. 
 
 		npm install yargs
 
-For example:
-
-		var args = require('yargs').argv;
-		var gulp = require('gulp');
-		var $ = require('gulp-load-plugins')({ lazy: true });
-		gulp.task('jshint', function () {
-		    return gulp
-			.src('./file.js')
-			.pipe($.jshint())
-			.pipe($.jshint.reporter('jshint-stylish', { verbose: true }))
-    			.pipe($.jshint.reporter('YOUR_REPORTER_HERE'));
-		});
-		
-		Command:
-		gulp jshint --verbose
+	For example:
+	
+			var args = require('yargs').argv;
+			var gulp = require('gulp');
+			var $ = require('gulp-load-plugins')({ lazy: true });
+			gulp.task('jshint', function () {
+			    return gulp
+				.src('./file.js')
+				.pipe($.jshint())
+				.pipe($.jshint.reporter('jshint-stylish', { verbose: true }))
+	    			.pipe($.jshint.reporter('YOUR_REPORTER_HERE'));
+			});
+	
+	Command:
+			gulp jshint --verbose
 	
 	*verbose is argument to show file list*
 	
