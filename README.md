@@ -379,24 +379,24 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	
 	Install:
 	
-			npm install --save-dev gulp-lesss gulp-autoprefixer
+			npm install --save-dev gulp-lesss gulp-autoprefixer 
 	
 	Code:
 	
 			var gulp = require('gulp');
 			var $ = require('gulp-load-plugins')({ lazy: true });
-	
-			gulp.task('jsCode', function () {
+			
+			gulp.task('css', function () {
 			return gulp
-				.src('test/*.js')
-				.pipe($.jscs())
-				.pipe($.jshint())
-				.pipe($.jshint.reporter('fail'));
+				.src('test/*.less')
+				.pipe($.less())
+				.pipe($.autoprefixer({ browsers: ['last 2 version', '> 5%'] }))
+				.pipe(gulp.dest('./build/'));
 			});
 
 	Execute:
 	
-			gulp jscode
+			gulp css
 
 
 
