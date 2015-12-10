@@ -110,10 +110,15 @@ Since Gulp is stream based, so in pipeline architecture, diagram would be as fol
 - [Github](https://git-scm.com/download/win)
 
 Please note you may also use chocolatey for installing nodejs and github
+
+*"Chocolatey is a package manager for Windows (like apt-get but for Windows). It was designed to be a decentralized framework for quickly installing applications and tools that you need. It is built on the NuGet infrastructure currently using PowerShell as its focus for delivering packages from the distros to your door, err computer."*
+
 [Chocolatey](https://chocolatey.org/)
 
-		chocoinstall nodejs
-		chocoinstall nodejs.install
+		choco install nodejs
+		choco install nodejs.install
+		choco install git 
+		choco install git.install 
 
 **Visual Studio Extensions**
 
