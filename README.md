@@ -136,7 +136,6 @@ Optional:
 - NPM
 - bower
 - gulp
-- 
 
 
 		npm install -g npm
