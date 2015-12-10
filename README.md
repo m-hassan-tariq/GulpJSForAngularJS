@@ -209,10 +209,10 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 			var jshint = require('gulp-jshint');
 			
 			gulp.task('jshint', function () {
-		  		return gulp
-				.src('./file.js')
-				.pipe(jshint())
-				.pipe(jshint.reporter('YOUR_REPORTER_HERE'));
+				return gulp
+					.src('./file.js')
+					.pipe(jshint())
+					.pipe(jshint.reporter('YOUR_REPORTER_HERE'));
 			});
 	
 	Code Before: 
@@ -221,10 +221,10 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 			var $ = require('gulp-load-plugins')({ lazy: true });
 			
 			gulp.task('jshint', function () {
-			    return gulp
-				.src('./file.js')
-				.pipe($.jshint())
-	    			.pipe($.jshint.reporter('YOUR_REPORTER_HERE'));
+				return gulp
+					.src('./file.js')
+					.pipe($.jshint())
+					.pipe($.jshint.reporter('YOUR_REPORTER_HERE'));
 			});
 
 - Use **yargs** for picking up argument from CLI. Using this plugin you may get node.js command line arguments. 
@@ -238,12 +238,12 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 			var $ = require('gulp-load-plugins')({ lazy: true });
 			
 			gulp.task('jshint', function () {
-			    return gulp
-				.src('./file.js')
-				.pipe($.if(args.verbose, $.print()))
-				.pipe($.jshint())
-				.pipe($.jshint.reporter('jshint-stylish', { verbose: true }))
-	    			.pipe($.jshint.reporter('YOUR_REPORTER_HERE'));
+				return gulp
+					.src('./file.js')
+					.pipe($.if(args.verbose, $.print()))
+					.pipe($.jshint())
+					.pipe($.jshint.reporter('jshint-stylish', { verbose: true }))
+					.pipe($.jshint.reporter('YOUR_REPORTER_HERE'));
 			});
 	
 	Command:
