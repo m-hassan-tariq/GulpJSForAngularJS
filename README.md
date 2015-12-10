@@ -149,9 +149,11 @@ Please note: [NPM will be automatcially downloaded with node js installer](http:
 **Create npm and bower dependencies files**
 
 - In order to handle server side packages, create *packages.json* file:
+
 		npm init
 
 - In order to handle client side packages, create *bower.json* file:
+
 		bower init
 
 **Project specific Node Packages**
