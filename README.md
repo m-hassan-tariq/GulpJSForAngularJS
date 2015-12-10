@@ -106,14 +106,14 @@ Since Gulp is stream based, so in pipeline architecture, diagram would be as fol
 
 **Visual Studio Extensions**
 
-[Node.js Tools for Visual Studio](https://www.visualstudio.com/features/node-js-vs)
-[Package Intellisense](https://visualstudiogallery.msdn.microsoft.com/65748cdb-4087-497e-a394-2e3449c8e61e)
-[Web Essentials](http://vswebessentials.com/)
-[Task Runner Explore](https://visualstudiogallery.msdn.microsoft.com/8e1b4368-4afb-467a-bc13-9650572db708)
+- [Node.js Tools for Visual Studio](https://www.visualstudio.com/features/node-js-vs)
+- [Package Intellisense](https://visualstudiogallery.msdn.microsoft.com/65748cdb-4087-497e-a394-2e3449c8e61e)
+- [Web Essentials](http://vswebessentials.com/)
+- [Task Runner Explorer](https://visualstudiogallery.msdn.microsoft.com/8e1b4368-4afb-467a-bc13-9650572db708)
 
 Optional:
-[Grunt Launcher](https://visualstudiogallery.msdn.microsoft.com/dcbc5325-79ef-4b72-960e-0a51ee33a0ff)
-[TypeScript 1.4 for Visual Studio 2013](https://visualstudiogallery.msdn.microsoft.com/2d42d8dc-e085-45eb-a30b-3f7d50d55304)
+- [Grunt Launcher](https://visualstudiogallery.msdn.microsoft.com/dcbc5325-79ef-4b72-960e-0a51ee33a0ff)
+- [TypeScript 1.4 for Visual Studio 2013](https://visualstudiogallery.msdn.microsoft.com/2d42d8dc-e085-45eb-a30b-3f7d50d55304)
 
 
 **App Config contains routing info and App Run contains startup logic**
