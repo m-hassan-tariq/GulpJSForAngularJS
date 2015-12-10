@@ -58,9 +58,9 @@ Since Gulp is stream based, so in pipeline architecture, diagram would be as fol
 		gulp.task(taskName [, arary of dependencies], function)
 	
 	- Register a task
-	- Dependecies are optional
-	- Dependecies are executed in parallel not in sequential order
-	- Actual task is executed soon after completion of depencies
+	- dependencies are optional
+	- dependencies are executed in parallel not in sequential order
+	- Actual task is executed soon after completion of dependencies
 
 2. **gulp.src**
 
@@ -92,9 +92,29 @@ Since Gulp is stream based, so in pipeline architecture, diagram would be as fol
 	- Execute call back function for the files matched with the file path
 	- Optionally specify options to apply to set of files
 
-**Logical Module Division**
+###Installation###
 
-![3](https://cloud.githubusercontent.com/assets/10474169/11671547/e6f240f6-9dce-11e5-9fed-78af550022d3.png)
+![6](https://cloud.githubusercontent.com/assets/10474169/11702361/b1640cb2-9e9b-11e5-994a-b1c3b4cda471.png)
+
+**Key players**
+
+- Visual Studio
+- NodeJS
+- NPM
+- Bower
+- Gulp
+
+**Visual Studio Extensions**
+
+[Node.js Tools for Visual Studio](https://www.visualstudio.com/features/node-js-vs)
+[Package Intellisense](https://visualstudiogallery.msdn.microsoft.com/65748cdb-4087-497e-a394-2e3449c8e61e)
+[Web Essentials](http://vswebessentials.com/)
+[Task Runner Explore](https://visualstudiogallery.msdn.microsoft.com/8e1b4368-4afb-467a-bc13-9650572db708)
+
+Optional:
+[Grunt Launcher](https://visualstudiogallery.msdn.microsoft.com/dcbc5325-79ef-4b72-960e-0a51ee33a0ff)
+[TypeScript 1.4 for Visual Studio 2013](https://visualstudiogallery.msdn.microsoft.com/2d42d8dc-e085-45eb-a30b-3f7d50d55304)
+
 
 **App Config contains routing info and App Run contains startup logic**
 
