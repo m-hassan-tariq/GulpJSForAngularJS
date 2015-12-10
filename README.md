@@ -187,20 +187,16 @@ Add gulpfile.js in project and paste below code in it.
 		    console.log('Hello world!');
 		});
 
+**Step 8: Executing Gulp Task**
+
 Now execute *testing* task in CMD (make sure CMD refer to project path)
 
 		gulp testing
 
-**App Config contains routing info and App Run contains startup logic**
 
-![5](https://cloud.githubusercontent.com/assets/10474169/11671602/2f3e3e46-9dcf-11e5-9d53-8ddc3bfb8552.png)
 
-**Controller Structure**
--	JS closure using IIFE
--	Controller As implementation to avoid $scope var every time in code
--	Named function for controller
 
-![6](https://cloud.githubusercontent.com/assets/10474169/11671695/c560afa8-9dcf-11e5-861f-92a96d44f70f.png)
+Images created by john papa
 
 
 
