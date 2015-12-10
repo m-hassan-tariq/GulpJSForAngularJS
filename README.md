@@ -165,8 +165,6 @@ Please note: [NPM will be automatcially downloaded with node js installer](http:
 	--save-dev store packages to devDependencies in *package.json* file
 	
 	--save store packages to dependencies in *package.json* file
-	
-	![7](https://cloud.githubusercontent.com/assets/10474169/11703264/2079d03a-9ea3-11e5-8585-b3614bde537e.png)
 
 **Step 6: Project specific Bower Packages**
 
