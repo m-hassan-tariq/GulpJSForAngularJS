@@ -173,7 +173,7 @@ Please note: [NPM will be automatcially downloaded with node js installer](http:
 		bower install lodash#v3.10.1 --save
 		bower install jasmine --save
 	
-	For specific version of bower packages you may used *#versionNumber*
+For specific version of bower packages you may used *#versionNumber*
 		bower install angularjs#v1.3.8 --save
 
 
