@@ -98,11 +98,11 @@ Since Gulp is stream based, so in pipeline architecture, diagram would be as fol
 
 **Key players**
 
-- Visual Studio
-- NodeJS
-- NPM
-- Bower
-- Gulp
+1. Visual Studio
+2. NodeJS
+3. NPM
+4. Bower
+5. Gulp
 
 **Visual Studio Extensions**
 
