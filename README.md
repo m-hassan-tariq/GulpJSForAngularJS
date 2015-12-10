@@ -317,12 +317,33 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	
 	Command:
 			gulp default
+
+- Use **gulp-plumber** to prevent pipe breaking caused by errors from gulp plugins
+
+		npm install gulp-plumber
+
+	For example:
+			var gulp = require('gulp');
+			var $ = require('gulp-load-plugins')({ lazy: true });
+			
+			gulp.task('error', function () {
+		  		return gulp
+				.src('./file.js')
+				.pipe($.plumber())
+				.pipe($.uglify())
+				.pipe(gulp.dest('./dist/'));
+			});
+	
+	Command:
+			gulp error
 	
 ###Automation Features of GulpJS###
 
 1. **JS Code Style Guide and Analysis**
 
-	In order to implement your javascript style guide and detect errors. Highlight all rules in your .jshintrc and .jscsrc file. Gulp will test javascript code from these files in order to enforce rules.
+	- Use this task in order to implement your javascript style guide and detect errors. 
+	- Highlight all rules in your .jshintrc and .jscsrc file. 
+	- Gulp will test javascript code from these files in order to enforce rules.
 	
 	[Sample Js Hint File] (https://github.com/jshint/jshint/blob/master/examples/.jshintrc)
 	
@@ -349,6 +370,33 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	
 			gulp jscode
 
+
+1. **less and sass compilation**
+
+	- Use gulpjs task in order to compile sass and less before browsing 
+	- Task will take care of variables, operators, functions, mixins etc in your less file
+	- You may use *AutoPrefixer* to add vendor prefixes
+	
+	Install:
+	
+			npm install --save-dev gulp-lesss gulp-autoprefixer
+	
+	Code:
+	
+			var gulp = require('gulp');
+			var $ = require('gulp-load-plugins')({ lazy: true });
+	
+			gulp.task('jsCode', function () {
+			return gulp
+				.src('test/*.js')
+				.pipe($.jscs())
+				.pipe($.jshint())
+				.pipe($.jshint.reporter('fail'));
+			});
+
+	Execute:
+	
+			gulp jscode
 
 
 
