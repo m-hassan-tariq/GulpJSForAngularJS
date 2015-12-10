@@ -131,7 +131,17 @@ Optional:
 - [Grunt Launcher](https://visualstudiogallery.msdn.microsoft.com/dcbc5325-79ef-4b72-960e-0a51ee33a0ff)
 - [TypeScript 1.4 for Visual Studio 2013](https://visualstudiogallery.msdn.microsoft.com/2d42d8dc-e085-45eb-a30b-3f7d50d55304)
 
+**Global Node Packages**
 
+- NPM
+- bower
+- gulp
+
+		npm install -g npm
+		npm install -g bower
+		npm install -g gulp
+		
+Please note: [NPM will be automatcially downloaded with node js installer](http://blog.npmjs.org/post/85484771375/how-to-install-npm)
 
 **App Config contains routing info and App Run contains startup logic**
 
