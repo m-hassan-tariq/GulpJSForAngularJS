@@ -407,8 +407,8 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 
 3. **Add Javascript and CSS dynamically in main file**
 
-	- Use *wiredep* to inject bower js and css dependencies into index.html
-	- Use *gulp-inject* to inject custom js and css dependencies into index.html
+	- Use **wiredep** to inject bower js and css dependencies into index.html
+	- Use **gulp-inject** to inject custom js and css dependencies into index.html
 	
 	Install:
 	
@@ -476,7 +476,55 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 			gulp injectCSS
 
 	
+2. **Automatic Browser Refresh**
+
+	- Use **BrowserSync** to view live changes in html/JS/CSS to browser
+	- *Proxy* attribute should have IIS path and port
+	- *Ghost Mode* synchronize actions across browsers e.g. scroll, click etc
 	
+	[Browser Sync](http://www.browsersync.io/)
+
+	Install:
+	
+			npm install --save-dev browser-sync
+	
+	Code:
+	
+			var gulp = require('gulp');
+			var browserSync = require('browser-sync');
+			
+			gulp.task('browser-sync', function () {
+			if (browserSync.active) {
+				return;
+			}
+			
+			var options = {
+				proxy: 'localhost:' + 3472,
+				port: 3470,
+				files: [
+					'./scripts/**/*.*'
+				],
+				ghostMode: {
+					clicks: true,
+					location: false,
+					forms: true,
+					scroll: true
+				},
+				injectChanges: true,
+				logFileChanges: true,
+				logLevel: 'debug',
+				logPrefix: 'gulp-patterns',
+				notify: true,
+				reloadDelay: 1000 
+			};
+			
+			browserSync(options);
+
+});
+
+	Execute:
+	
+			gulp browser-sync	
 
 
 Images created by john papa
