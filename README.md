@@ -320,30 +320,30 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	
 ###Automation Features of GulpJS###
 
-1. JS Code Style Guide and Analysis
+1. **JS Code Style Guide and Analysis**
 
-In order to implement your javascript style guide and detect errors. Highlight all rules in your .jshintrc and .jscsrc file. Gulp will test javascript code from these files in order to enforce rules.
-
-[Sample Js Hint File] (https://github.com/jshint/jshint/blob/master/examples/.jshintrc)
-
-[Sample Js Code Style File] (https://github.com/jscs-dev/jscs-dev.github.io/blob/dev/.jscsrc)
-
-Install:
-
-		npm install --save-dev gulp-load-plugins jshint-stylish gulp-util
-
-Code:
-		var gulp = require('gulp');
-		var $ = require('gulp-load-plugins')({ lazy: true });
-
-		gulp.task('jsCode', function () {
-
-		return gulp
-			.src('test/*.js')
-			.pipe($.jscs())
-			.pipe($.jshint())
-			.pipe($.jshint.reporter('fail'));
-		});
+	In order to implement your javascript style guide and detect errors. Highlight all rules in your .jshintrc and .jscsrc file. Gulp will test javascript code from these files in order to enforce rules.
+	
+	[Sample Js Hint File] (https://github.com/jshint/jshint/blob/master/examples/.jshintrc)
+	
+	[Sample Js Code Style File] (https://github.com/jscs-dev/jscs-dev.github.io/blob/dev/.jscsrc)
+	
+	Install:
+	
+			npm install --save-dev gulp-load-plugins jshint-stylish gulp-util
+	
+	Code:
+			var gulp = require('gulp');
+			var $ = require('gulp-load-plugins')({ lazy: true });
+	
+			gulp.task('jsCode', function () {
+	
+			return gulp
+				.src('test/*.js')
+				.pipe($.jscs())
+				.pipe($.jshint())
+				.pipe($.jshint.reporter('fail'));
+			});
 
 
 Images created by john papa
