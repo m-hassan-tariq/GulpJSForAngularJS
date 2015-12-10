@@ -104,7 +104,7 @@ Since Gulp is stream based, so in pipeline architecture, diagram would be as fol
 4. Bower
 5. Gulp
 
-**Visual Studio Extensions**
+1. **Visual Studio Extensions**
 
 - [Node.js Tools for Visual Studio](https://www.visualstudio.com/features/node-js-vs)
 - [Package Intellisense](https://visualstudiogallery.msdn.microsoft.com/65748cdb-4087-497e-a394-2e3449c8e61e)
