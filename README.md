@@ -133,15 +133,47 @@ Optional:
 
 **Global Node Packages**
 
+Install packages for CLI globally, This will enable glup and bower command line interfaces
+
 - NPM
 - bower
 - gulp
 
-
 		npm install -g npm
 		npm install -g bower
 		npm install -g gulp
+
+Please note: [NPM will be automatcially downloaded with node js installer](http://blog.npmjs.org/post/85484771375/how-to-install-npm)
+
+
+**Create npm and bower dependencies files**
+
+- In order to handle server side packages, create *packages.json* file:
+		npm init
+
+- In order to handle client side packages, create *bower.json* file:
+		bower init
+
+**Project specific Node Packages**
+
+- gulp
+
+		npm install --save-dev gulp
+
+	--save-dev store packages to devDependencies in *package.json* file
+	--save store packages to dependencies in *package.json* file
+	
+	![7](https://cloud.githubusercontent.com/assets/10474169/11703201/a4fde7b6-9ea2-11e5-87f0-3a84eb8fa016.png)
+
+**Project specific Bower Packages**
+
+		bower install angular --save
+		bower install lodash#v3.10.1 --save
+		bower install jasmine --save
 		
+	For specific version of bower packages you may used *#versionNumber*
+		bower install angularjs#v1.3.8 --save
+
 Please note: [NPM will be automatcially downloaded with node js installer](http://blog.npmjs.org/post/85484771375/how-to-install-npm)
 
 **App Config contains routing info and App Run contains startup logic**
