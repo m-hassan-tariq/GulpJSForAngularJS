@@ -197,7 +197,7 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 
 - Avoid magic strings out of gulp file in order to make things simple, maintainable and easy to read. Introduce them in gulp.config.js file for instance file path, global gulp variables, wildcard strings etc
 
-![8](https://cloud.githubusercontent.com/assets/10474169/11723141/44663bb6-9f32-11e5-9a55-87fafd7aa3d9.png)
+	![8](https://cloud.githubusercontent.com/assets/10474169/11723141/44663bb6-9f32-11e5-9a55-87fafd7aa3d9.png)
 
 - Use **gulp-load-plugins** for lazy laoding, Loads in any gulp plugins and attaches them to the global scope, or an object of your choice.
 
