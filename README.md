@@ -104,7 +104,7 @@ Since Gulp is stream based, so in pipeline architecture, diagram would be as fol
 4. Bower
 5. Gulp
 
-**Installer**
+**Step 1: Installer**
 
 - [Node.js](https://nodejs.org/en/)
 - [Github](https://git-scm.com/download/win)
@@ -120,7 +120,7 @@ Please note you may also use chocolatey for installing nodejs and github
 		choco install git 
 		choco install git.install 
 
-**Visual Studio Extensions**
+**Step 2: Visual Studio Extensions**
 
 - [Node.js Tools for Visual Studio](https://www.visualstudio.com/features/node-js-vs)
 - [Package Intellisense](https://visualstudiogallery.msdn.microsoft.com/65748cdb-4087-497e-a394-2e3449c8e61e)
@@ -131,7 +131,7 @@ Optional:
 - [Grunt Launcher](https://visualstudiogallery.msdn.microsoft.com/dcbc5325-79ef-4b72-960e-0a51ee33a0ff)
 - [TypeScript 1.4 for Visual Studio 2013](https://visualstudiogallery.msdn.microsoft.com/2d42d8dc-e085-45eb-a30b-3f7d50d55304)
 
-**Global Node Packages**
+**Step 3: Global Node Packages**
 
 Install packages for CLI globally, This will enable glup and bower command line interfaces
 
@@ -146,7 +146,7 @@ Install packages for CLI globally, This will enable glup and bower command line 
 Please note: [NPM will be automatcially downloaded with node js installer](http://blog.npmjs.org/post/85484771375/how-to-install-npm)
 
 
-**Create npm and bower dependencies files**
+**Step 4: Create npm and bower dependencies files**
 
 - In order to handle server side packages, create *packages.json* file:
 
@@ -156,7 +156,7 @@ Please note: [NPM will be automatcially downloaded with node js installer](http:
 
 		bower init
 
-**Project specific Node Packages**
+**Step 5: Project specific Node Packages**
 
 - gulp
 
@@ -168,7 +168,7 @@ Please note: [NPM will be automatcially downloaded with node js installer](http:
 	
 	![7](https://cloud.githubusercontent.com/assets/10474169/11703264/2079d03a-9ea3-11e5-8585-b3614bde537e.png)
 
-**Project specific Bower Packages**
+**Step 6: Project specific Bower Packages**
 
 		bower install angular --save
 		bower install lodash#v3.10.1 --save
@@ -178,7 +178,18 @@ For specific version of bower packages you may used *#versionNumber*
 
 		bower install angularjs#v1.3.8 --save
 
+**Step 7: Add gulp config file in project**
 
+Add gulpfile.js in project and paste below code in it.
+
+		var gulp = require('gulp');
+		gulp.task('testing', function () {
+		    console.log('Hello world!');
+		});
+
+Now execute *testing* task in CMD (make sure CMD refer to project path)
+
+		gulp testing
 
 **App Config contains routing info and App Run contains startup logic**
 
@@ -188,18 +199,9 @@ For specific version of bower packages you may used *#versionNumber*
 -	JS closure using IIFE
 -	Controller As implementation to avoid $scope var every time in code
 -	Named function for controller
--	Function declarations to abstract underline detail
--	Bindable members upfront at the top
--	DI using $inject to overcome issues during bundling and minification.
--	Wrapping members in init() method for controller activation promises. 
 
 ![6](https://cloud.githubusercontent.com/assets/10474169/11671695/c560afa8-9dcf-11e5-861f-92a96d44f70f.png)
 
-**Service Structure**
--	Function declarations to abstract underline detail
--	Accessible members upfront at the top
--	Singleton object
--	SRP
 
 
 
