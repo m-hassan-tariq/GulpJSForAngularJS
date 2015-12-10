@@ -171,12 +171,13 @@ Please note: [NPM will be automatcially downloaded with node js installer](http:
 **Step 6: Project specific Bower Packages**
 
 		bower install angular --save
-		bower install lodash#v3.10.1 --save
+		bower install lodash --save
 		bower install jasmine --save
 	
 For specific version of bower packages you may used *#versionNumber*
 
 		bower install angularjs#v1.3.8 --save
+		bower install lodash#v3.10.1 --save
 
 **Step 7: Add gulp config file in project**
 
