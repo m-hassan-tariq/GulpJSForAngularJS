@@ -236,9 +236,11 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 			var args = require('yargs').argv;
 			var gulp = require('gulp');
 			var $ = require('gulp-load-plugins')({ lazy: true });
+			
 			gulp.task('jshint', function () {
 			    return gulp
 				.src('./file.js')
+				.pipe($.if(args.verbose, $.print()))
 				.pipe($.jshint())
 				.pipe($.jshint.reporter('jshint-stylish', { verbose: true }))
 	    			.pipe($.jshint.reporter('YOUR_REPORTER_HERE'));
@@ -250,7 +252,72 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	*verbose is argument to show file list*
 	
 
+- Use **gulp-util** for utility function like log(), isStream(), isBuffer(), noop()
 
+		npm install gulp-util
+
+	For example:
+			var gutil = require('gulp-util');
+			
+			gulp.task('hello', function () {
+				gutil.log('Hello World');
+			});
+	
+	Command:
+			gulp hello
+	
+- Use **gulp-print** for printing names of files to the console in order to check status of the gulp pipe.
+
+		npm install gulp-print
+
+	For example:
+			var gulp = require('gulp');
+			var $ = require('gulp-load-plugins')({ lazy: true });
+			
+			gulp.task('print', function() {
+			  gulp.src('test/*.js')
+			    .pipe($.print())
+			});
+	
+	Command:
+			gulp print
+	
+- Use **gulp-if** for conditionally control the flow of vinyl objects.
+
+		npm install gulp-if
+
+	![9](https://cloud.githubusercontent.com/assets/10474169/11724097/a25202d2-9f37-11e5-874f-1d650fbba59b.png)
+
+	For example:
+			var gulp = require('gulp');
+			var $ = require('gulp-load-plugins')({ lazy: true });
+			var args = require('yargs').argv;
+			
+			gulp.task('if', function() {
+			  gulp.src('test/*.js')
+			    .pipe($.if(args.admin, $.uglify()))
+			    .pipe(gulp.dest('./dist/'));
+			});
+	
+	Command:
+			gulp if true
+	
+	*if user passed true as value for admin argument then js files as per source will be minfied*
+
+- Use **gulp-task-listing** as first step in defualt task in order to provide an easy way to get a listing of your tasks from your gulpfile.
+
+		npm install gulp-task-listing
+
+	For example:
+			var gulp = require('gulp');
+			var $ = require('gulp-load-plugins')({ lazy: true });
+			
+			gulp.task('help', $.taskListing);
+			gulp.task('default', ['help']);
+	
+	Command:
+			gulp default
+	
 
 Images created by john papa
 
