@@ -333,17 +333,23 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 			npm install --save-dev gulp-load-plugins jshint-stylish gulp-util
 	
 	Code:
+	
 			var gulp = require('gulp');
 			var $ = require('gulp-load-plugins')({ lazy: true });
 	
 			gulp.task('jsCode', function () {
-	
 			return gulp
 				.src('test/*.js')
 				.pipe($.jscs())
 				.pipe($.jshint())
 				.pipe($.jshint.reporter('fail'));
 			});
+
+	Execute:
+	
+			gulp jscode
+
+
 
 
 Images created by john papa
