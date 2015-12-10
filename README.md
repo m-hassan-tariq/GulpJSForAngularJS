@@ -277,8 +277,9 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 			var $ = require('gulp-load-plugins')({ lazy: true });
 			
 			gulp.task('print', function() {
-			  	gulp.src('test/*.js')
-			    		.pipe($.print())
+			  	return gulp
+		  			.src('test/*.js')
+	    		       	    	.pipe($.print())
 			});
 	
 	Command:
@@ -297,7 +298,8 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 			var args = require('yargs').argv;
 			
 			gulp.task('if', function() {
-		  		gulp.src('test/*.js')
+		  		return gulp
+		  		    .src('test/*.js')
 				    .pipe($.if(args.admin, $.uglify()))
 				    .pipe(gulp.dest('./dist/'));
 			});
