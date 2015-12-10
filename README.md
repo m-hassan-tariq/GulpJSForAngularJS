@@ -163,18 +163,18 @@ Please note: [NPM will be automatcially downloaded with node js installer](http:
 	--save-dev store packages to devDependencies in *package.json* file
 	--save store packages to dependencies in *package.json* file
 	
-	![7](https://cloud.githubusercontent.com/assets/10474169/11703201/a4fde7b6-9ea2-11e5-87f0-3a84eb8fa016.png)
+	![7](https://cloud.githubusercontent.com/assets/10474169/11703264/2079d03a-9ea3-11e5-8585-b3614bde537e.png)
 
 **Project specific Bower Packages**
 
 		bower install angular --save
 		bower install lodash#v3.10.1 --save
 		bower install jasmine --save
-		
+	
 	For specific version of bower packages you may used *#versionNumber*
 		bower install angularjs#v1.3.8 --save
 
-Please note: [NPM will be automatcially downloaded with node js installer](http://blog.npmjs.org/post/85484771375/how-to-install-npm)
+
 
 **App Config contains routing info and App Run contains startup logic**
 
