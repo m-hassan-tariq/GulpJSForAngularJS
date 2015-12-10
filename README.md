@@ -257,6 +257,7 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 		npm install gulp-util
 
 	For example:
+	
 			var gutil = require('gulp-util');
 			
 			gulp.task('hello', function () {
@@ -271,12 +272,13 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 		npm install gulp-print
 
 	For example:
+	
 			var gulp = require('gulp');
 			var $ = require('gulp-load-plugins')({ lazy: true });
 			
 			gulp.task('print', function() {
-			  gulp.src('test/*.js')
-			    .pipe($.print())
+			  	gulp.src('test/*.js')
+			    		.pipe($.print())
 			});
 	
 	Command:
@@ -289,14 +291,15 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	![9](https://cloud.githubusercontent.com/assets/10474169/11724097/a25202d2-9f37-11e5-874f-1d650fbba59b.png)
 
 	For example:
+	
 			var gulp = require('gulp');
 			var $ = require('gulp-load-plugins')({ lazy: true });
 			var args = require('yargs').argv;
 			
 			gulp.task('if', function() {
-			  gulp.src('test/*.js')
-			    .pipe($.if(args.admin, $.uglify()))
-			    .pipe(gulp.dest('./dist/'));
+		  		gulp.src('test/*.js')
+				    .pipe($.if(args.admin, $.uglify()))
+				    .pipe(gulp.dest('./dist/'));
 			});
 	
 	Command:
@@ -309,6 +312,7 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 		npm install gulp-task-listing
 
 	For example:
+	
 			var gulp = require('gulp');
 			var $ = require('gulp-load-plugins')({ lazy: true });
 			
@@ -323,15 +327,16 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 		npm install gulp-plumber
 
 	For example:
+	
 			var gulp = require('gulp');
 			var $ = require('gulp-load-plugins')({ lazy: true });
 			
 			gulp.task('error', function () {
 		  		return gulp
-				.src('./file.js')
-				.pipe($.plumber())
-				.pipe($.uglify())
-				.pipe(gulp.dest('./dist/'));
+					.src('./file.js')
+					.pipe($.plumber())
+					.pipe($.uglify())
+					.pipe(gulp.dest('./dist/'));
 			});
 	
 	Command:
