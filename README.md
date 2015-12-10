@@ -325,26 +325,23 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 In order to implement your javascript style guide and detect errors. Highlight all rules in your .jshintrc and .jscsrc file. Gulp will test javascript code from these files in order to enforce rules.
 
 [Sample Js Hint File] (https://github.com/jshint/jshint/blob/master/examples/.jshintrc)
-[Sample Js Code Style File] (https://github.com/jscs-dev/jscs-dev.github.io/blob/dev/.jscsrc)
-		
-		npm install --save-devyargsgulp-load-plugins gulp-if gulp-print jshint-stylish gulp-util
-		
 
+[Sample Js Code Style File] (https://github.com/jscs-dev/jscs-dev.github.io/blob/dev/.jscsrc)
+
+Install:
+
+		npm install --save-dev gulp-load-plugins jshint-stylish gulp-util
+
+Code:
 		var gulp = require('gulp');
-		var args = require('yargs').argv;
-		var config = require('./gulp.config')();
-		var del = require('del');
 		var $ = require('gulp-load-plugins')({ lazy: true });
 
 		gulp.task('jsCode', function () {
-		log('Analyzing source with JSHint and JSCS');
-	
+
 		return gulp
-			.src(config.alljs)
-			.pipe($.if(args.verbose, $.print()))
+			.src('test/*.js')
 			.pipe($.jscs())
 			.pipe($.jshint())
-			.pipe($.jshint.reporter('jshint-stylish', { verbose: true }))
 			.pipe($.jshint.reporter('fail'));
 		});
 
