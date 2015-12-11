@@ -356,6 +356,10 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	
 	[Sample Js Code Style File] (https://github.com/jscs-dev/jscs-dev.github.io/blob/dev/.jscsrc)
 	
+	Pre Install:
+
+			npm install --save-dev gulp gulp-load-plugins 
+
 	Install:
 	
 			npm install --save-dev gulp-load-plugins jshint-stylish gulp-util
@@ -384,6 +388,10 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	- Task will take care of variables, operators, functions, mixins etc in your less file
 	- You may use *AutoPrefixer* to add vendor prefixes
 	
+	Pre Install:
+
+			npm install --save-dev gulp gulp-load-plugins 
+
 	Install:
 	
 			npm install --save-dev gulp-less gulp-autoprefixer 
@@ -410,6 +418,10 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	- Use **wiredep** to inject bower js and css dependencies into index.html
 	- Use **gulp-inject** to inject custom js and css dependencies into index.html
 	
+	Pre Install:
+
+			npm install --save-dev gulp gulp-load-plugins
+
 	Install:
 	
 			npm install --save-dev wiredep gulp-inject
@@ -484,6 +496,10 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	
 	[Browser Sync](http://www.browsersync.io/)
 
+	Pre Install:
+
+			npm install --save-dev gulp
+	
 	Install:
 	
 			npm install --save-dev browser-sync
@@ -497,7 +513,6 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 				if (browserSync.active) {
 					return;
 				}
-			
 				var options = {
 					proxy: 'localhost:' + 3472,
 					port: 3470,
@@ -517,9 +532,7 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 					notify: true,
 					reloadDelay: 1000 
 				};
-			
 				browserSync(options);
-
 			});
 
 	Execute:
@@ -532,6 +545,10 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	- Use **gulp-imagemin** to minify PNG, JPEG, GIF and SVG images
 	- Use *optimizationLevel* attribute to adjust compression between 0 and 7
 	
+	Pre Install:
+
+			npm install --save-dev gulp gulp-load-plugins 
+
 	Install:
 	
 			npm install --save-dev gulp-imagemin 
@@ -596,8 +613,12 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 
 8. **List all task Files**
 
-	- Use **gulp-task-listing*** in order to list all tasks in your gulpjs file
+	- Use **gulp-task-listing** in order to list all tasks in your gulpjs file
 	
+	Pre Install:
+
+			npm install --save-dev gulp gulp-load-plugins 
+
 	Install:
 	
 			npm install --save-dev gulp-task-listing 
@@ -623,6 +644,10 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	- *standAlone* attribute in options means to make a new angular module for templates
 	- *gulp-angular-templatecache* will create a file and using .run() service of main module, this will load all html in $templateCache service
 	
+	Pre Install:
+
+			npm install --save-dev gulp gulp-load-plugins 
+
 	Install:
 	
 			npm install --save-dev gulp-angular-templatecache gulp-minify-html 
@@ -655,11 +680,15 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 
 10. **Combing all JS and CSS into respective one file**
 
-	- Use **gulp-useref*** in order to concatenate all css into one css file and all js files into one js file
+	- Use **gulp-useref** in order to concatenate all css into one css file and all js files into one js file
 	- Parse build blocks in HTML files to replace references to non-optimized scripts or stylesheets.
 	- Similar to gulp-inject
 	- Index.html should have bower/inject/build section, bower and inject area should be populated first using **wiredep** and **gulp-inject** task, then execute this task to concatenate all css and js file into respective single file as mentioned under build tag of index.html
 	
+	Pre Install:
+
+			npm install --save-dev gulp gulp-load-plugins
+
 	Install:
 	
 			npm install --save-dev gulp-useref@v1.1.0
@@ -713,23 +742,97 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	
 11. **Minifying Files**
 
-	- Use **gulp-task-listing*** in order to list all tasks in your gulpjs file
+	- Use **gulp-Uglify** to remove whitespace, comments, minify *javascript* files
+	- Use **gulp-CSSO** to remove whitespace, comments, transform *css* files
+	- Use **gulp-filter** to seperate out/reduce/filter files from gulp stream
+	- Manglin your code can break angular dependency injection, in order to avoid this use Strict Dependency Injection (ng-strict-di) or $inject Property Annotation
+	- Filter.restore() function put filter back into stream
 	
+	Pre Install:
+
+			npm install --save-dev gulp gulp-load-plugins 
+
 	Install:
 	
-			npm install --save-dev gulp-task-listing 
+			npm install --save-dev gulp-filter@v2.0.0 gulp-csso gulp-uglify
 	
 	Code:
 	
 			var gulp = require('gulp');
 			var $ = require('gulp-load-plugins')({ lazy: true });
+			var assets = $.useref.assets({ searchPath:  './' });
+			var cssFilter = $.filter('**/*.css');
+			var jsFilter = $.filter('**/*.js');
 			
-			gulp.task('help', $.taskListing);
+			gulp.task('minify', function () {
+
+			    return gulp
+			        .src('./build/index.cshtml')
+			        .pipe(assets)
+			        .pipe(cssFilter)
+			        .pipe($.csso())
+			        .pipe(cssFilter.restore())
+			        .pipe(jsFilter)
+			        .pipe($.uglify())
+			        .pipe(jsFilter.restore())
+			        .pipe(assets.restore())
+			        .pipe($.useref())
+			        .pipe(gulp.dest('./build/'));
+			});
 
 	Execute:
 	
 			gulp minify	
 	
+
+12. **Angular Dependency Injection**
+
+	- Use **gulp-Uglify** to remove whitespace, comments, minify *javascript* files
+	- Use **gulp-CSSO** to remove whitespace, comments, transform *css* files
+	- Use **gulp-filter** to seperate out/reduce/filter files from gulp stream
+	- Manglin your code can break angular dependency injection, in order to avoid this use Strict Dependency Injection (ng-strict-di) or $inject Property Annotation
+	- Filter.restore() function put filter back into stream
+	
+	Pre Install:
+
+			npm install --save-dev gulp gulp-load-plugins
+	
+	Install:
+	
+			npm install --save-dev gulp-ng-annotate
+	
+	Code:
+	
+			var gulp = require('gulp');
+			var $ = require('gulp-load-plugins')({ lazy: true });
+			var assets = $.useref.assets({ searchPath:  './' });
+			var cssFilter = $.filter('**/*.css');
+			var jsLibFilter = $.filter('**/' + config.optimized.lib);
+			var jsAppFilter = $.filter('**/' + config.optimized.app);
+			
+			gulp.task('minify', function () {
+
+			    return gulp
+			        .src('./build/index.cshtml')
+			        .pipe(assets)
+			        .pipe(cssFilter)
+			        .pipe($.csso())
+			        .pipe(cssFilter.restore())
+			        .pipe(jsLibFilter)
+				.pipe($.uglify())
+				.pipe(jsLibFilter.restore())
+				.pipe(jsAppFilter)
+				.pipe($.ngAnnotate())
+				.pipe($.uglify())
+				.pipe(jsAppFilter.restore())
+			        .pipe(assets.restore())
+			        .pipe($.useref())
+			        .pipe(gulp.dest('./build/'));
+			});
+
+	Execute:
+	
+			gulp di
 	
 Images created by john papa
 
