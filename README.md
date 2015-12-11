@@ -787,11 +787,11 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 
 12. **Angular Dependency Injection**
 
-	- Use **gulp-Uglify** to remove whitespace, comments, minify *javascript* files
-	- Use **gulp-CSSO** to remove whitespace, comments, transform *css* files
-	- Use **gulp-filter** to seperate out/reduce/filter files from gulp stream
-	- Manglin your code can break angular dependency injection, in order to avoid this use Strict Dependency Injection (ng-strict-di) or $inject Property Annotation
-	- Filter.restore() function put filter back into stream
+	- Use **gulp-ng-annotate** in order to provide automatic security blanket because manglin your code can break angular dependency injection
+	- gulp-ng-annotate looks for dependency injection and adds angular injection
+	- Use ** /* @ngInject */ ** annotation on top of controller, services, anonymous function etc to resolve dependency injection if forget to use Strict Dependency Injection (ng-strict-di) or $inject Property Annotation.
+	- @ngInject provide code hint for gulp-ng-annotate to add angular injections
+	- Avoid implementing  @ngInject for third party libraries
 	
 	Pre Install:
 
@@ -810,7 +810,7 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 			var jsLibFilter = $.filter('**/' + config.optimized.lib);
 			var jsAppFilter = $.filter('**/' + config.optimized.app);
 			
-			gulp.task('minify', function () {
+			gulp.task('di', function () {
 
 			    return gulp
 			        .src('./build/index.cshtml')
