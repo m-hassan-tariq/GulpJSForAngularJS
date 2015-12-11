@@ -1049,6 +1049,42 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 			gulp e2e
 
 
+
+17. **Setting up test runner on HTML**
+
+	- Use **gulp-jasmine-browser** in order to execute jasmine tests in a browser using gulp.
+	- In order to check output, type following url in browser window: http://localhost:8888/
+	
+	Pre Install:
+
+			npm install --save-dev  
+
+	Install:
+	
+			npm install --save-dev gulp-jasmine-browser
+	
+	Code:
+	
+			var gulp = require('gulp');
+			var jasmineBrowser = require('gulp-jasmine-browser');
+			var config.files = ['./scripts/lib/angular/angular.js',
+				'./scripts/lib/angular/angular-mocks.js',
+				'./scripts/app/myService.services.js',
+				'./scripts/app/myService.services-spec.js',];
+				
+			gulp.task('jasmineBrowser', function () {
+				return gulp.src(config.files)
+				  .pipe(jasmineBrowser.specRunner())
+				  .pipe(jasmineBrowser.server({ port: 8888 }));
+			});
+
+	Execute:
+	
+			gulp jasmineBrowser
+
+
+
+
 	
 Images created by john papa
 
