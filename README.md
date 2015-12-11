@@ -615,10 +615,13 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 
 9. **Caching HTML Templates**
 
-	- Use **gulp-angular-templatecache*** in order to Concatenates and registers AngularJS templates in the $templateCache
-	- All HTML files will be stored as key-value pair using angular *$templateCache* service
+	- Use **gulp-angular-templatecache** in order to concatenates and registers AngularJS templates in the $templateCache
+	- All HTML files will be stored as key-value pair using angular **$templateCache** service
+	- URL of HTML will be key and html code of file will be value in $templateCache service
 	- This will reduce HTTP requests
-	- FOr each HTML request by angular, first it will check $templateCache service, If not found then it will make HTTP request for that HTML file
+	- For each HTML request by angular, first it will check $templateCache service, If not found then it will make HTTP request for that HTML file
+	- *standAlone* attribute in options means to make a new angular module for templates
+	- *gulp-angular-templatecache* will create a file and using .run() service of main module, this will load all html in $templateCache service
 	
 	Install:
 	
@@ -628,7 +631,12 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	
 			var gulp = require('gulp');
 			var $ = require('gulp-load-plugins')({ lazy: true });
-				
+			var options = 	{
+						module: 'ModuleName',
+						standAlone: false,
+						root: 'scripts/app/'
+					} 	
+					
 			gulp.task('templatecache', function () {
 					
 				return gulp
@@ -636,11 +644,7 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 					.pipe($.minifyHtml({ empty: true }))
 					.pipe($.angularTemplatecache(
 							'templates.js',
-							{
-								module: 'ModuleName',
-								standAlone: false,
-								root: 'scripts/app/'
-							}
+							options
 						))
 					.pipe(gulp.dest('./.tmp/'));
 			});
