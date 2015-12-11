@@ -380,13 +380,13 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 
 2. **less and sass compilation**
 
-	- Use gulpjs task in order to compile sass and less before browsing 
+	- Use **gulp-less** in order to compile less into css before browsing 
 	- Task will take care of variables, operators, functions, mixins etc in your less file
 	- You may use *AutoPrefixer* to add vendor prefixes
 	
 	Install:
 	
-			npm install --save-dev gulp-lesss gulp-autoprefixer 
+			npm install --save-dev gulp-less gulp-autoprefixer 
 	
 	Code:
 	
@@ -476,7 +476,7 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 			gulp injectCSS
 
 	
-2. **Automatic Browser Refresh**
+4. **Automatic Browser Refresh**
 
 	- Use **BrowserSync** to view live changes in html/JS/CSS to browser
 	- *Proxy* attribute should have IIS path and port
@@ -494,37 +494,64 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 			var browserSync = require('browser-sync');
 			
 			gulp.task('browser-sync', function () {
-			if (browserSync.active) {
-				return;
-			}
+				if (browserSync.active) {
+					return;
+				}
 			
-			var options = {
-				proxy: 'localhost:' + 3472,
-				port: 3470,
-				files: [
-					'./scripts/**/*.*'
-				],
-				ghostMode: {
-					clicks: true,
-					location: false,
-					forms: true,
-					scroll: true
-				},
-				injectChanges: true,
-				logFileChanges: true,
-				logLevel: 'debug',
-				logPrefix: 'gulp-patterns',
-				notify: true,
-				reloadDelay: 1000 
-			};
+				var options = {
+					proxy: 'localhost:' + 3472,
+					port: 3470,
+					files: [
+						'./scripts/**/*.*'
+					],
+					ghostMode: {
+						clicks: true,
+						location: false,
+						forms: true,
+						scroll: true
+					},
+					injectChanges: true,
+					logFileChanges: true,
+					logLevel: 'debug',
+					logPrefix: 'gulp-patterns',
+					notify: true,
+					reloadDelay: 1000 
+				};
 			
-			browserSync(options);
+				browserSync(options);
 
-});
+			});
 
 	Execute:
 	
 			gulp browser-sync	
+
+
+5. **Compressing Images**
+
+	- Use **gulp-imagemin** to minify PNG, JPEG, GIF and SVG images
+	- Use *optimizationLevel* attribute to adjust compression between 0 and 7
+	
+	Install:
+	
+			npm install --save-dev gulp-imagemin 
+	
+	Code:
+	
+			var gulp = require('gulp');
+			var $ = require('gulp-load-plugins')({ lazy: true });
+			
+			gulp.task('images', ['clean-images'], function () {
+			
+				return gulp
+					.src('./src/images/')
+					.pipe($.imagemin({ optimizationLevel: 4 }))
+					.pipe(gulp.dest('./build/images'));
+			});
+
+	Execute:
+	
+			gulp images
 
 
 Images created by john papa
