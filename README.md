@@ -767,7 +767,7 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 			gulp.task('minify', function () {
 
 			    return gulp
-			        .src('./build/index.cshtml')
+			        .src('./build/index.html')
 			        .pipe(assets)
 			        .pipe(cssFilter)
 			        .pipe($.csso())
@@ -811,28 +811,103 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 			var jsAppFilter = $.filter('**/' + config.optimized.app);
 			
 			gulp.task('di', function () {
-
-			    return gulp
-			        .src('./build/index.cshtml')
-			        .pipe(assets)
-			        .pipe(cssFilter)
-			        .pipe($.csso())
-			        .pipe(cssFilter.restore())
-			        .pipe(jsLibFilter)
+				
+				return gulp
+				.src('./build/index.html')
+				.pipe(assets)
+				.pipe(cssFilter)
+				.pipe($.csso())
+				.pipe(cssFilter.restore())
+				.pipe(jsLibFilter)
 				.pipe($.uglify())
 				.pipe(jsLibFilter.restore())
 				.pipe(jsAppFilter)
 				.pipe($.ngAnnotate())
 				.pipe($.uglify())
 				.pipe(jsAppFilter.restore())
-			        .pipe(assets.restore())
-			        .pipe($.useref())
-			        .pipe(gulp.dest('./build/'));
+				.pipe(assets.restore())
+				.pipe($.useref())
+				.pipe(gulp.dest('./build/'));
 			});
 
 	Execute:
 	
 			gulp di
+
+13. **Revisions**
+
+	- Use **gulp-rev** in order to implement static asset revisioning by appending content hash to filenames: unicorn.css => unicorn-d41d8cd98f.css
+	- Use **gulp-rev-replace** in order to rewrite occurences of filenames which have been renamed by gulp-rev in index.html(html referencing file)
+	- gulp-rev-replace solves the cache problem too
+	
+	Pre Install:
+
+			npm install --save-dev gulp gulp-load-plugins 
+
+	Install:
+	
+			npm install --save-dev gulp-rev gulp-rev-replace
+	
+	Code:
+	
+			var gulp = require('gulp');
+			var $ = require('gulp-load-plugins')({ lazy: true });
+			
+			gulp.task('revision', function () {
+			
+			    return gulp
+			        .src('src/*.js')
+			        .pipe($.rev())
+			        .pipe(gulp.dest('./build/'));
+			});
+
+	Execute:
+	
+			gulp revision
+
+14. **File Version**
+
+	- Use **gulp-bump** for vesrioning in package.json and bower.json
+	- --type=pre will bump the prerelease version *.*.*-x
+	- --type=patch or no flag will bump the patch version *.*.x
+	- --type=minor will bump the minor version *.x.*
+	- --type=major will bump the major version x.*.*
+	- --version=1.2.3 will bump to a specific version and ignore other flags
+	- for --version=1.2.3 means 1 corresponds to major, 3 corresponds to minor and 3 corresponds to package version
+	
+	Pre Install:
+
+			npm install --save-dev gulp gulp-load-plugins yargs
+
+	Install:
+	
+			npm install --save-dev gulp-bump
+	
+	Code:
+	
+			var gulp = require('gulp');
+			var $ = require('gulp-load-plugins')({ lazy: true });
+			
+			gulp.task('version', function () {
+				var type = args.type;
+				var version = args.version;
+				var options = {};
+				if (version) {
+					options.version = version;
+				} else {
+					options.type = type;
+				}
+				return gulp
+					.src([ './package.json', './bower.json' ])
+					.pipe($.bump(options))
+					.pipe(gulp.dest('./'));
+			});
+
+	Execute:
+	
+			gulp version --version=2.0.0
+			gulp version --type=minor
+
 	
 Images created by john papa
 
