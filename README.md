@@ -952,7 +952,7 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	- **karma** is A Karma plugin. used to generate code coverage.
 	- Task *singleRun* refers to execute tests once, it can fail a build but perfect for continuous integration
 	- Task *alwaysRun* refers to execute tests and stay alive, monitors changes in file and re-run with each change
-	- Please make sure karma.config.js file is included in your project
+	- Please make sure karma.config.js file is included in your project before executing gulp task
 	- __dirname is global object of NodeJS for the name of the directory that the currently executing script resides in
 	
 	Pre Install:
@@ -1005,7 +1005,21 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 16. **E2E Testing with Protractor**
 
 	- **Protractor** is an end-to-end test framework for AngularJS applications
-	- It  runs tests against your application running in a real browser, interacting with it as a user would.
+	- It execute tests against your application running in a real browser, interacting with it as a real life user.
+	- Make sure you have updated version of webdriver-manager otherwise execute below command in cmd before executing gulp task
+	
+			webdriver-manager update --standalone
+
+	- In **protractor.config.js** file mention file path to the *selenium server jar*, path of *chrome driver* and comment out address of a running *selenium* server before executing gulp task
+	
+			seleniumServerJar: './node_modules/protractor/selenium/selenium-server-standalone-2.48.2.jar',
+			chromeDriver: './node_modules/protractor/selenium/chromedriver.exe',
+			//seleniumAddress: 'http://localhost:4444/wd/hub',
+
+	- Start *webdriver-manager* in seperate console before executing gulp task
+	
+			webdriver-manager start
+
 	- __dirname is global object of NodeJS for the name of the directory that the currently executing script resides in
 	
 	Pre Install:
