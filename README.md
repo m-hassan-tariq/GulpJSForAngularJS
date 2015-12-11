@@ -653,9 +653,67 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	
 			gulp templatecache
 
+10. **Combing all JS and CSS into respective one file**
+
+	- Use **gulp-useref*** in order to concatenate all css into one css file and all js files into one js file
+	- Parse build blocks in HTML files to replace references to non-optimized scripts or stylesheets.
+	- Similar to gulp-inject
+	- Index.html should have bower/inject/build section, bower and inject area should be populated first using **wiredep** and **gulp-inject** task, then execute this task to concatenate all css and js file into respective single file as mentioned under build tag of index.html
+	
+	Install:
+	
+			npm install --save-dev gulp-useref@v1.1.0
+
+	Syntax in HTML File for **gulp-useref**:
+	
+			<!-- build:css content/lib.css -->
+			<!-- bower:css -->
+			<!-- endbower -->
+			<!-- endbuild -->
+			
+			<!-- build:css content/site.css -->
+			<!-- inject:css -->
+			<!-- inject -->
+			<!-- endbuild -->
+			
+			<!-- build:js js/lib.js -->
+			<!-- bower:js -->
+			<!-- endbower -->
+			<!-- endbuild -->
+			
+			<!-- build:js js/app.js -->
+			<!-- inject:js -->
+			<!-- endinject -->
+			<!-- endbuild -->
+	
+	Code:
+	
+			var gulp = require('gulp');
+			var $ = require('gulp-load-plugins')({ lazy: true });
+			var assets = $.useref.assets({ searchPath: './' });
+			
+			gulp.task('optimize', function () {
+				
+				return gulp
+					.src('./build/index.html')
+					.pipe(assets)
+					.pipe(assets.restore())
+					.pipe($.useref())
+					.pipe(gulp.dest('./build/'));
+			});
+
+	Execute:
+	
+			gulp help
 
 
-
+	- $.useref.assets() collects assets from the HTML comment
+	- $.useref.restore() restore the files to the index.html
+	- $.useref() will concatenate files
+	
+	
+	
+	
 Images created by john papa
 
 
