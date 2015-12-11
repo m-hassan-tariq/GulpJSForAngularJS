@@ -556,10 +556,6 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 6. **Copy Files**
 
 	- For copying files like fonts, non-compressing images etc
-	
-	Install:
-	
-			npm install --save-dev gulp-imagemin 
 
 	Code:
 	
@@ -576,9 +572,13 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	
 			gulp delete
 			
-6. **Delete Files**
+7. **Delete Files**
 
 	- For deleting folders and files.
+	
+	Install:
+	
+			npm install --save-dev del
 	
 	Code:
 	
@@ -594,7 +594,64 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	
 			gulp delete
 
+8. **List all task Files**
+
+	- Use **gulp-task-listing*** in order to list all tasks in your gulpjs file
+	
+	Install:
+	
+			npm install --save-dev gulp-task-listing 
+	
+	Code:
+	
+			var gulp = require('gulp');
+			var $ = require('gulp-load-plugins')({ lazy: true });
 			
+			gulp.task('help', $.taskListing);
+
+	Execute:
+	
+			gulp help
+
+9. **Caching HTML Templates**
+
+	- Use **gulp-angular-templatecache*** in order to Concatenates and registers AngularJS templates in the $templateCache
+	- All HTML files will be stored as key-value pair using angular *$templateCache* service
+	- This will reduce HTTP requests
+	- FOr each HTML request by angular, first it will check $templateCache service, If not found then it will make HTTP request for that HTML file
+	
+	Install:
+	
+			npm install --save-dev gulp-angular-templatecache gulp-minify-html 
+	
+	Code:
+	
+			var gulp = require('gulp');
+			var $ = require('gulp-load-plugins')({ lazy: true });
+				
+			gulp.task('templatecache', function () {
+					
+				return gulp
+					.src('**/*.html')
+					.pipe($.minifyHtml({ empty: true }))
+					.pipe($.angularTemplatecache(
+							'templates.js',
+							{
+								module: 'ModuleName',
+								standAlone: false,
+								root: 'scripts/app/'
+							}
+						))
+					.pipe(gulp.dest('./.tmp/'));
+			});
+
+	Execute:
+	
+			gulp templatecache
+
+
+
+
 Images created by john papa
 
 
