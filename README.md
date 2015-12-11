@@ -346,6 +346,7 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	
 ###Automation Features of GulpJS###
 
+
 1. **JS Code Style Guide and Analysis**
 
 	- Use this task in order to implement your javascript style guide and detect errors. 
@@ -382,6 +383,7 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 			gulp jscode
 
 
+
 2. **less and sass compilation**
 
 	- Use **gulp-less** in order to compile less into css before browsing 
@@ -412,6 +414,8 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	Execute:
 	
 			gulp css
+
+
 
 3. **Add Javascript and CSS dynamically in main file**
 
@@ -487,6 +491,7 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	
 			gulp injectCSS
 
+
 	
 4. **Automatic Browser Refresh**
 
@@ -498,7 +503,7 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 
 	Pre Install:
 
-			npm install --save-dev gulp
+			npm install --save-dev gulp lodash node-notifier
 	
 	Install:
 	
@@ -508,6 +513,7 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	
 			var gulp = require('gulp');
 			var browserSync = require('browser-sync');
+			var _ = require('lodash');
 			
 			gulp.task('browser-sync', function () {
 				if (browserSync.active) {
@@ -534,10 +540,22 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 				};
 				browserSync(options);
 			});
+			
+			function notify(options) {
+				var notifier = require('node-notifier');
+				var notifyOptions = {
+					sound: 'Bottle',
+					contentImage: path.join(__dirname, 'gulp.png'),
+					icon: path.join(__dirname, 'gulp.png')
+				};
+				_.assign(notifyOptions, options);
+				notifier.notify(notifyOptions);
+			}
 
 	Execute:
 	
 			gulp browser-sync	
+
 
 
 5. **Compressing Images**
@@ -570,6 +588,8 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	
 			gulp images
 
+
+
 6. **Copy Files**
 
 	- For copying files like fonts, non-compressing images etc
@@ -588,7 +608,9 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	Execute:
 	
 			gulp delete
-			
+
+
+
 7. **Delete Files**
 
 	- For deleting folders and files.
@@ -610,6 +632,8 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	Execute:
 	
 			gulp delete
+
+
 
 8. **List all task Files**
 
@@ -633,6 +657,8 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	Execute:
 	
 			gulp help
+
+
 
 9. **Caching HTML Templates**
 
@@ -677,6 +703,8 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	Execute:
 	
 			gulp templatecache
+
+
 
 10. **Combing all JS and CSS into respective one file**
 
@@ -739,6 +767,8 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	- $.useref.assets() collects assets from the HTML comment
 	- $.useref.restore() restore the files to the index.html
 	- $.useref() will concatenate files
+
+
 	
 11. **Minifying Files**
 
@@ -784,6 +814,7 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	
 			gulp minify	
 	
+
 
 12. **Angular Dependency Injection**
 
@@ -834,6 +865,8 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	
 			gulp di
 
+
+
 13. **Revisions**
 
 	- Use **gulp-rev** in order to implement static asset revisioning by appending content hash to filenames: unicorn.css => unicorn-d41d8cd98f.css
@@ -865,6 +898,8 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	
 			gulp revision
 
+
+
 14. **File Version**
 
 	- Use **gulp-bump** for vesrioning in package.json and bower.json
@@ -887,6 +922,7 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	
 			var gulp = require('gulp');
 			var $ = require('gulp-load-plugins')({ lazy: true });
+			var args = require('yargs').argv;
 			
 			gulp.task('version', function () {
 				var type = args.type;
@@ -907,6 +943,67 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	
 			gulp version --version=2.0.0
 			gulp version --type=minor
+
+
+
+15. **Unit Testing**
+
+	- **karma** is Test Runner for JavaScript, a  tool that allows you to execute JS code in multiple real browsers
+	- **karma** is A Karma plugin. used to generate code coverage.
+	- Task *singleRun* refers to execute tests once, it can fail a build but perfect for continuous integration
+	- Task *alwaysRun* refers to execute tests and stay alive, monitors changes in file and re-run with each change
+	- Please make sure karma.config.js file is included in your project
+	- __dirname is global object of NodeJS for the name of the directory that the currently executing script resides in
+	
+	Pre Install:
+
+			npm install --save-dev gulp
+
+	Install:
+	
+			npm install --save-dev karma phantomjs karma-coverage karma-growl-reporter karma-phantomjs-launcher  karma-firefox-launcher karma-ie-launcher karma-chrome-launcher
+	
+	Code:
+	
+			var gulp = require('gulp');
+			
+			gulp.task('singleRun', function (done) {
+				startTests(true, done);
+			});
+			
+			gulp.task('alwaysRun',  function (done) {
+				startTests(false, done);
+			});
+				
+			function startTests(singleRun, done) {
+				var karma = require('karma').server;
+				var excludeFiles = [];
+				var serverSpecs = 'tests/**/*.spec.js'
+				
+				karma.start({
+					configFile: __dirname + '/karma.config.js',
+					exclude: excludeFiles,
+					singleRun: !!singleRun
+				}, karmaCompleted);
+					
+				function karmaCompleted(karmaResult) {
+					if (karmaResult === 1) {
+						done('karma: tests failed with code ' + karmaResult);
+					} else {
+						done();
+					}
+				}
+			}
+
+	Execute:
+	
+			gulp singleRun
+			gulp alwaysRun
+
+
+
+
+
 
 	
 Images created by john papa
