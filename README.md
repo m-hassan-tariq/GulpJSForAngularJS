@@ -946,7 +946,7 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 
 
 
-15. **Unit Testing**
+15. **Unit Testing with Jasmine and Karma**
 
 	- **karma** is Test Runner for JavaScript, a  tool that allows you to execute JS code in multiple real browsers
 	- **karma** is A Karma plugin. used to generate code coverage.
@@ -961,7 +961,7 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 
 	Install:
 	
-			npm install --save-dev karma phantomjs karma-coverage karma-growl-reporter karma-phantomjs-launcher  karma-firefox-launcher karma-ie-launcher karma-chrome-launcher
+			npm install --save-dev karma phantomjs karma-coverage karma-growl-reporter karma-phantomjs-launcher  karma-firefox-launcher karma-ie-launcher karma-chrome-launcher karma-jasmine jasmine
 	
 	Code:
 	
@@ -1002,7 +1002,37 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 
 
 
+16. **E2E Testing with Protractor**
 
+	- **Protractor** is an end-to-end test framework for AngularJS applications
+	- It  runs tests against your application running in a real browser, interacting with it as a user would.
+	- __dirname is global object of NodeJS for the name of the directory that the currently executing script resides in
+	
+	Pre Install:
+
+			npm install --save-dev gulp
+
+	Install:
+	
+			npm install --save-dev gulp-protractor protractor
+	
+	Code:
+	
+			var gulp = require('gulp');
+			var protractor = require("gulp-protractor").protractor;
+				
+			gulp.task('e2e', function (done) {
+				gulp.src(__dirname + './protractor_test/')
+				.pipe(protractor({
+					configFile: './protractor.config.js',
+					args: ['--baseUrl', 'http://127.0.0.1:8000']
+				}))
+				.on('error', function (e) { throw e })
+			});
+
+	Execute:
+	
+			gulp e2e
 
 
 	
