@@ -541,7 +541,7 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 			var gulp = require('gulp');
 			var $ = require('gulp-load-plugins')({ lazy: true });
 			
-			gulp.task('images', ['clean-images'], function () {
+			gulp.task('images', function () {
 			
 				return gulp
 					.src('./src/images/')
@@ -553,7 +553,48 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 	
 			gulp images
 
+6. **Copy Files**
 
+	- For copying files like fonts, non-compressing images etc
+	
+	Install:
+	
+			npm install --save-dev gulp-imagemin 
+
+	Code:
+	
+			var gulp = require('gulp');
+			
+			gulp.task('delete', function () {
+			
+				return gulp
+					.src('./src/fonts/')
+					.pipe(gulp.dest('./build/fonts'));
+			});
+
+	Execute:
+	
+			gulp delete
+			
+6. **Delete Files**
+
+	- For deleting folders and files.
+	
+	Code:
+	
+			var gulp = require('gulp');
+			var del = require('del');
+			
+			gulp.task('delete', function () {
+			
+				del('./build/');
+			});
+
+	Execute:
+	
+			gulp delete
+
+			
 Images created by john papa
 
 
