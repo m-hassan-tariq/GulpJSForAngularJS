@@ -692,7 +692,7 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 			var $ = require('gulp-load-plugins')({ lazy: true });
 			var assets = $.useref.assets({ searchPath: './' });
 			
-			gulp.task('optimize', function () {
+			gulp.task('combine', function () {
 				
 				return gulp
 					.src('./build/index.html')
@@ -704,14 +704,31 @@ Now execute *testing* task in CMD (make sure CMD refer to project path)
 
 	Execute:
 	
-			gulp help
+			gulp combine
 
 
 	- $.useref.assets() collects assets from the HTML comment
 	- $.useref.restore() restore the files to the index.html
 	- $.useref() will concatenate files
 	
+11. **Minifying Files**
+
+	- Use **gulp-task-listing*** in order to list all tasks in your gulpjs file
 	
+	Install:
+	
+			npm install --save-dev gulp-task-listing 
+	
+	Code:
+	
+			var gulp = require('gulp');
+			var $ = require('gulp-load-plugins')({ lazy: true });
+			
+			gulp.task('help', $.taskListing);
+
+	Execute:
+	
+			gulp minify	
 	
 	
 Images created by john papa
