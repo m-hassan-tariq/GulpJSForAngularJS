@@ -1,8 +1,6 @@
 # Gulp.JS For AngularJS
 Using Gulp.JS to specify units of work in angularJS
 
-# Content is still under progress
-
 ###Core Feature of Gulp###
 - Minification
 - Concatenation
